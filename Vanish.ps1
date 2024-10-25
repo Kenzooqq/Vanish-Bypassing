@@ -157,32 +157,31 @@ $windowName = "Google Chrome"
 
 
 [WindowHelper]::HideWindowByTitle($windowName)
-Write-Host "La ventana de Google Chrome ha sido oculta."
+Write-Host "Google Hide !."
 
 
 
-# Script para ocultar la barra de extensiones en una grabadora de pantalla
 
-# Función para encontrar y ocultar la ventana de la barra de extensión
+
+
 function Hide-ExtensionBar {
-    # Obtiene todas las ventanas de las aplicaciones
+
     $windows = Get-Process | Where-Object { $_.MainWindowTitle -ne "" }
 
     foreach ($window in $windows) {
-        # Cambia "NombreDeTuGrabadora" por el nombre real de la aplicación
-        if ($window.MainWindowTitle -like "*NombreDeTuGrabadora*") {
-            # Intenta ocultar la ventana
+
+
             try {
                 $hwnd = $window.MainWindowHandle
                 $null = [void][System.Runtime.Interopservices.Marshal]::GetDelegateForFunctionPointer([System.Runtime.Interopservices.Marshal]::GetDelegateForFunctionPointer([System.IntPtr]::Zero, [System.IntPtr]), [System.Type])::ShowWindow($hwnd, 0)  # 0 = ocultar
             } catch {
-                Write-Host "Error al ocultar la barra de extensión."
+                Write-Host "Error with extension."
             }
         }
     }
 }
 
-# Llama a la función
+
 Hide-ExtensionBar
 
 
