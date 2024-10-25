@@ -186,8 +186,6 @@ Hide-ExtensionBar
 
 
 
-}
-
 function StopServices {
     Write-Host "Select Option:" -ForegroundColor DarkRed
     Write-Host ""
